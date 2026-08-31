@@ -2,7 +2,7 @@
 
 Painel de gestão financeira profissional: fluxo de caixa, transações, orçamentos por categoria e relatórios prontos para exportação.
 
-**Demo:** https://finops-ledger.vercel.app/ (login: qualquer usuário e senha)
+**Demo:** https://finops-ledger-opal.vercel.app/ (login: qualquer usuário e senha)
 
 ## Identidade visual
 
