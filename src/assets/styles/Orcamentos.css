@@ -1,0 +1,29 @@
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.budget-card { padding: 1.4rem 1.5rem; }
+
+.budget-card__head { display: flex; align-items: center; gap: .6rem; margin-bottom: .9rem; }
+.budget-card__dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.budget-card__head h3 { font-size: 1rem; }
+
+.budget-card__figures { display: flex; align-items: baseline; gap: .5rem; margin-bottom: .8rem; }
+.budget-card__figures span:first-child { font-size: 1.3rem; font-weight: 700; color: var(--ink); }
+.budget-card__of { font-size: .8rem; color: var(--ink-soft); }
+
+.budget-card__bar {
+  height: 8px;
+  border-radius: 6px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  margin-bottom: .6rem;
+}
+.budget-card__fill { height: 100%; border-radius: 6px; transition: width .3s ease; }
+.budget-card__fill.is-over { background: var(--debit); }
+
+.budget-card__pct { font-size: .78rem; color: var(--ink-soft); }
+.budget-card__pct.is-over { color: var(--debit); font-weight: 600; }

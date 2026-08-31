@@ -1,0 +1,53 @@
+.relatorio__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.relatorio__controls .page-subtitle { margin: 0; }
+
+.relatorio__sheet { padding: 2.25rem; max-width: 880px; }
+
+.relatorio__head { border-bottom: 2px solid var(--ink); padding-bottom: 1rem; margin-bottom: 1.75rem; }
+.relatorio__head h2 { font-size: 1.4rem; }
+.relatorio__head p { margin: .3rem 0 0; color: var(--ink-soft); font-size: .88rem; }
+
+.relatorio__section { margin-bottom: 2rem; }
+.relatorio__section h3 { font-size: 1.05rem; margin-bottom: 1rem; }
+
+.relatorio__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.relatorio__stats > div { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: .9rem 1rem; }
+.relatorio__stats span { display: block; font-size: .78rem; color: var(--ink-soft); margin-bottom: .3rem; }
+.relatorio__stats strong { font-size: 1.15rem; }
+
+.relatorio__table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.relatorio__table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--ink-faint);
+  padding: .5rem .4rem;
+  border-bottom: 1px solid var(--ink);
+}
+.relatorio__table td { padding: .6rem .4rem; border-bottom: 1px solid var(--line); }
+.relatorio__table .is-credit { color: var(--green-deep); }
+.relatorio__table .is-debit, .relatorio__table .is-over { color: var(--debit); }
+
+.relatorio__foot { border-top: 1px solid var(--line); padding-top: 1rem; font-size: .78rem; color: var(--ink-faint); }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  .sidebar, .header { display: none !important; }
+  .layout__content { padding: 0 !important; }
+  .relatorio__sheet { box-shadow: none; border: none; max-width: none; }
+}
+
+@media (max-width: 768px) {
+  .relatorio__controls { flex-direction: column; align-items: flex-start; }
+  .relatorio__stats { grid-template-columns: 1fr; }
+  .relatorio__sheet { padding: 1.5rem; }
+}

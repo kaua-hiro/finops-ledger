@@ -1,0 +1,135 @@
+.dashboard { display: flex; flex-direction: column; gap: 1.5rem; }
+
+/* ---- Balance seal: the signature element ---- */
+.panel.balance-seal {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 2.25rem;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--green-deep) 130%);
+  color: var(--paper);
+  border: none;
+}
+.balance-seal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: repeating-radial-gradient(circle at 88% 30%, rgba(185,151,74,.14) 0, rgba(185,151,74,.14) 1px, transparent 1px, transparent 6px);
+  opacity: .6;
+  pointer-events: none;
+}
+.balance-seal__ring {
+  position: relative;
+  z-index: 1;
+  width: 76px;
+  height: 76px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.balance-seal__ring svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.2; }
+.balance-seal__body { position: relative; z-index: 1; display: flex; flex-direction: column; gap: .3rem; }
+.balance-seal__label {
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 236, .7);
+}
+.balance-seal__value { font-size: 2.4rem; font-weight: 700; letter-spacing: -.01em; color: var(--paper); }
+.balance-seal__note { font-size: .8rem; color: rgba(247, 245, 236, .55); }
+
+/* ---- stat cards ---- */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+.stat-card__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .6rem; }
+.stat-card__label { font-size: .85rem; color: var(--ink-soft); font-weight: 500; }
+.stat-card__icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.stat-card__icon--up { background: var(--green-soft); color: var(--green-deep); }
+.stat-card__icon--down { background: var(--debit-soft); color: var(--debit); }
+.stat-card__value { font-size: 1.6rem; font-weight: 700; color: var(--ink); }
+.stat-card__delta { font-size: .8rem; margin-top: .4rem; font-weight: 600; }
+.stat-card__delta.is-up { color: var(--green-deep); }
+.stat-card__delta.is-down { color: var(--debit); }
+
+/* ---- grid: chart + bills ---- */
+.dashboard__grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.panel { padding: 1.5rem 1.6rem; }
+.panel__head { margin-bottom: 1.2rem; }
+.panel__head h3 { font-size: 1.05rem; display: flex; align-items: center; gap: .5rem; }
+.panel__head p { margin: .3rem 0 0; font-size: .85rem; color: var(--ink-soft); }
+.panel__head--row { display: flex; justify-content: space-between; align-items: center; margin-bottom: .8rem; }
+.panel__link { font-size: .85rem; font-weight: 600; color: var(--green-deep); }
+
+.cashflow { width: 100%; height: auto; }
+.cashflow__grid { stroke: var(--line); stroke-width: 1; }
+.cashflow__area--income { fill: rgba(31, 110, 67, .1); }
+.cashflow__area--expense { fill: rgba(178, 58, 58, .07); }
+.cashflow__line { fill: none; stroke-width: 2.5; }
+.cashflow__line--income { stroke: var(--green); }
+.cashflow__line--expense { stroke: var(--debit); }
+.cashflow__dot--income { fill: var(--green); }
+.cashflow__dot--expense { fill: var(--debit); }
+.cashflow__month { font-family: var(--font-mono); font-size: 9px; fill: var(--ink-faint); text-anchor: middle; }
+
+.chart-legend { display: flex; gap: 1.5rem; margin-top: .6rem; font-size: .82rem; color: var(--ink-soft); }
+.chart-legend .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: .4rem; }
+.dot--income { background: var(--green); }
+.dot--expense { background: var(--debit); }
+
+.bills-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .9rem; }
+.bills-list li { display: flex; justify-content: space-between; align-items: center; padding-bottom: .9rem; border-bottom: 1px solid var(--line); }
+.bills-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.bills-list__name { margin: 0; font-size: .9rem; font-weight: 600; color: var(--ink); }
+.bills-list__due { margin: .15rem 0 0; font-size: .78rem; color: var(--ink-soft); }
+.bills-list__amount { font-size: .88rem; font-weight: 600; color: var(--ink); }
+
+/* ---- ledger table (shared with Transações) ---- */
+.ledger-table__wrap { overflow-x: auto; }
+.ledger-table { width: 100%; border-collapse: collapse; min-width: 480px; }
+.ledger-table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: .6rem .5rem;
+  border-bottom: 1px solid var(--line-strong);
+}
+.ledger-table__amount-head { text-align: right; }
+.ledger-table td { padding: .8rem .5rem; border-bottom: 1px solid var(--line); font-size: .9rem; }
+.ledger-table tbody tr:last-child td { border-bottom: none; }
+.ledger-table__date { color: var(--ink-faint); white-space: nowrap; }
+.ledger-table__tag { font-family: var(--font-mono); font-size: .78rem; font-weight: 600; }
+.ledger-table__amount { text-align: right; font-weight: 600; white-space: nowrap; }
+.ledger-table__amount.is-credit { color: var(--green-deep); }
+.ledger-table__amount.is-debit { color: var(--debit); }
+.ledger-table__empty { text-align: center; color: var(--ink-faint); padding: 2rem 0; }
+
+@media (max-width: 1080px) {
+  .dashboard__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .balance-seal { flex-direction: column; align-items: flex-start; text-align: left; }
+  .balance-seal__value { font-size: 1.9rem; }
+}

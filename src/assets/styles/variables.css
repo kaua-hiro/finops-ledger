@@ -1,0 +1,43 @@
+/* Ledger — a professional finance console styled after the engraved
+   vernacular of paper money and bank statements: guilloché line
+   work, tabular mono figures, a wax-seal badge for the balance.
+   Not another blue-Inter SaaS dashboard. */
+
+:root {
+  --paper: #F7F5EC;
+  --paper-warm: #FBFAF4;
+  --panel: #FFFFFF;
+  --ink: #16241C;
+  --ink-soft: #4B5D52;
+  --ink-faint: #7C8B81;
+
+  --green: #1F6E43;
+  --green-deep: #14502F;
+  --green-soft: #DCEEE2;
+
+  --gold: #B9974A;
+  --gold-soft: #F1E6CC;
+
+  --debit: #B23A3A;
+  --debit-soft: #F5DEDE;
+
+  --line: rgba(22, 36, 28, .12);
+  --line-strong: rgba(22, 36, 28, .28);
+
+  --font-display: 'Spectral', Georgia, serif;
+  --font-body: 'Public Sans', 'Segoe UI', sans-serif;
+  --font-mono: 'Roboto Mono', 'Courier New', monospace;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow-sm: 0 1px 2px rgba(22, 36, 28, .06);
+  --shadow-md: 0 10px 24px -12px rgba(22, 36, 28, .18);
+  --shadow-lg: 0 24px 48px -20px rgba(22, 36, 28, .28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
